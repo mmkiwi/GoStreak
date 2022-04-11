@@ -1,0 +1,14 @@
+{
+  "solution": {
+    "path": "GoStreak.sln",
+    "projects": [
+		"GoStreak.Shared\\GoStreak.Shared.shproj",
+
+		"GoStreak.Mobile\\GoStreak.Mobile.csproj",
+
+		"GoStreak.Wasm\\GoStreak.Wasm.csproj",
+
+		"GoStreak.Skia.Gtk\\GoStreak.Skia.Gtk.csproj",
+    ]
+  }
+}

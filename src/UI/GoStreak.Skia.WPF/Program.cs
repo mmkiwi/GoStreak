@@ -1,0 +1,3 @@
+namespace GoStreak.Skia.Gtk
+{
+}

@@ -1,0 +1,10 @@
+{
+	"profiles": {
+		"GoStreak.Windows (Package)": {
+			"commandName": "MsixPackage"
+		},
+		"GoStreak.Windows (Unpackaged)": {
+			"commandName": "Project"
+		}
+	}
+}

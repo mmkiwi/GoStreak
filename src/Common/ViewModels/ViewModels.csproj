@@ -1,0 +1,23 @@
+﻿<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>10.0</LangVersion>
+    <AssemblyName>MMKiwi.GoStreak.$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>MMKiwi.GoStreak.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+    <Version>0.1.0</Version>
+    <Authors>Micah Makaiwi</Authors>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview3" />
+  </ItemGroup>
+
+</Project>
