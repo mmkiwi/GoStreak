@@ -5,17 +5,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-using Microsoft.AspNetCore.Identity;
-
 namespace MMKiwi.GoStreak.Model;
 
 [DataContract]
 public class StreakTask
 {
-    public StreakTask(string name)
-    {
-        Name = name;
-    }
+    public StreakTask(string name) => Name = name;
 
     [DataMember(EmitDefaultValue = false, Order = 1)]
     public int StreakTaskId { get; set; }
@@ -57,7 +52,7 @@ public class StreakTask
     
 
     [DataMember(Order = 3)]
-    public string OwnerId { get; set; } = null!;
-    public IdentityUser Owner { get; set; } = null!;
+    public int OwnerId { get; set; }
+    public StreakUser Owner { get; set; } = null!;
 
 }

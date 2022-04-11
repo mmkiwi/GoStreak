@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MMKiwi.GoStreak.Database.Migrations.SqlServerMigrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,10 +13,11 @@ namespace MMKiwi.GoStreak.Database.Migrations.SqlServerMigrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "varchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "varchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -27,16 +28,17 @@ namespace MMKiwi.GoStreak.Database.Migrations.SqlServerMigrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "varchar(450)", nullable: false),
-                    UserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "varchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "varchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "varchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "varchar(max)", nullable: true),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -54,9 +56,9 @@ namespace MMKiwi.GoStreak.Database.Migrations.SqlServerMigrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<string>(type: "varchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "varchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "varchar(max)", nullable: true)
+                    RoleId = table.Column<int>(type: "int", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -75,9 +77,9 @@ namespace MMKiwi.GoStreak.Database.Migrations.SqlServerMigrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "varchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "varchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "varchar(max)", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -94,10 +96,10 @@ namespace MMKiwi.GoStreak.Database.Migrations.SqlServerMigrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "varchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "varchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "varchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "varchar(450)", nullable: false)
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,8 +116,8 @@ namespace MMKiwi.GoStreak.Database.Migrations.SqlServerMigrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "varchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "varchar(450)", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    RoleId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -138,10 +140,10 @@ namespace MMKiwi.GoStreak.Database.Migrations.SqlServerMigrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "varchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "varchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "varchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "varchar(max)", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -160,7 +162,7 @@ namespace MMKiwi.GoStreak.Database.Migrations.SqlServerMigrations
                 {
                     StreakPauseId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "varchar(450)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
                     PauseStart = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PauseEnd = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -181,7 +183,7 @@ namespace MMKiwi.GoStreak.Database.Migrations.SqlServerMigrations
                 {
                     StreakTaskId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false, collation: "LATIN1_GENERAL_100_CI_AS_SC_UTF8"),
                     Sunday = table.Column<bool>(type: "bit", nullable: false),
                     Monday = table.Column<bool>(type: "bit", nullable: false),
                     Tuesday = table.Column<bool>(type: "bit", nullable: false),
@@ -192,7 +194,7 @@ namespace MMKiwi.GoStreak.Database.Migrations.SqlServerMigrations
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastCompleteDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StreakStartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    OwnerId = table.Column<string>(type: "varchar(450)", nullable: false)
+                    OwnerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

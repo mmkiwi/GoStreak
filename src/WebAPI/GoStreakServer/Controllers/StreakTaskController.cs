@@ -16,11 +16,7 @@ public class StreakTaskController : ControllerBase
 
     private readonly SqlServerDataContext _context;
 
-    public StreakTaskController(SqlServerDataContext context)
-    {
-        _context = context;
-    }
-
+    public StreakTaskController(SqlServerDataContext context) => _context = context;
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<StreakTask>>> GetTodoItems() 

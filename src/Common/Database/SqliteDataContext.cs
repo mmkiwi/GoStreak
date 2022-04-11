@@ -12,6 +12,12 @@ public class SqliteDataContext : SqlServerDataContext
     {
     }
 
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        BaseOnModelCreating(builder);
+
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         // connect to sqlite database

@@ -14,7 +14,7 @@ public class Protobuf
     [Fact]
     public void GetProto()
     {
-        var streakTask = new StreakTask("Test", null!);
+        var streakTask = new StreakTask("Test");
         byte[] utf8Json = JsonSerializer.SerializeToUtf8Bytes(streakTask, GoStreakJsonContext.Default.StreakTask);
         string json = JsonSerializer.Serialize(streakTask, GoStreakJsonContext.Default.StreakTask);
     }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using MMKiwi.GoStreak.Model;
 
 namespace MMKiwi.GoStreak.Database;
-public class SqlServerDataContext: IdentityDbContext<IdentityUser>
+public class SqlServerDataContext : IdentityDbContext<StreakUser, StreakRole, int>
 {
     public DbSet<StreakTask> StreakTasks => Set<StreakTask>();
     public DbSet<StreakPause> StreakPause => Set<StreakPause>();
@@ -21,9 +21,17 @@ public class SqlServerDataContext: IdentityDbContext<IdentityUser>
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        const string collation = "LATIN1_GENERAL_100_CI_AS_SC_UTF8";
         base.OnModelCreating(builder);
-        builder.UseCollation("LATIN1_GENERAL_100_CI_AS_SC_UTF8");
+        builder.UseCollation(collation);
+        builder.Entity<StreakTask>(st =>
+        {
+            st.Property(b => b.Name).HasColumnType("varchar(100)").UseCollation(collation);
+        });
     }
+
+    protected void BaseOnModelCreating(ModelBuilder builder) => base.OnModelCreating(builder);
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
